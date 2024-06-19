@@ -15,6 +15,7 @@ import (
 
 type Adapter struct {
 	api ports.APIPort
+	payment ports.PaymentPort
 	port int
 	order.UnimplementedOrderServer
 }
@@ -26,14 +27,14 @@ func NewAdapter(api ports.APIPort, port int) *Adapter {
 func (a Adapter) Run() {
 	var err error
 
-	listen, err := net.Listen("tcp", fmt.Sprintf("%d", a.port))
+	listen, err := net.Listen("tcp", fmt.Sprintf(":%d", a.port))
 	if err != nil {
 		log.Fatalf("failed to listen on port %d, error: %v", a.port, err)
 	}
 
 	grpcServer := grpc.NewServer()
 	order.RegisterOrderServer(grpcServer, a)
-	if config.GetEnv() == "developmnet" {
+	if config.GetEnv() == "dev" {
 		reflection.Register(grpcServer)
 	}
 

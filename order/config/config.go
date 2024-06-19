@@ -11,7 +11,11 @@ func GetEnv() string {
 }
 
 func GetDataSourceURL() string {
-	return getEnvironmentValue("APPLICATION_PORT")
+	return getEnvironmentValue("DATA_SOURCE_URL")
+}
+
+func GetPaymentServiceUrl() string {
+	return getEnvironmentValue("PAYMENT_SERVICE_URL")
 }
 
 func GetApplicationPort() int {
