@@ -3,6 +3,7 @@ package payment
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/GolangAndGrpc/microserviceApis/golang/payments"
 	"github.com/GolangAndGrpc/microservices/order/internal/application/core/domain"
@@ -27,8 +28,10 @@ func NewAdapter(paymentServiceUrl string) (*Adapter, error){
 }
 
 func (a *Adapter) Charge(order *domain.Order) error {
-	fmt.Printf("Sending request to payment create")
-	_, err := a.payment.Create(context.Background(), &payments.CreatePaymentRequest{
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*1)
+	defer cancel()
+	fmt.Println("Sending request to payment service")
+	_, err := a.payment.Create(ctx, &payments.CreatePaymentRequest{
 		UserId: order.CustomerID,
 		OrderId: order.ID,
 		TotalPrice: order.TotalPrice(),

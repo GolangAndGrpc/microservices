@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/GolangAndGrpc/microserviceApis/golang/order v0.0.0-20240619055813-9c654f74ff06
 	github.com/GolangAndGrpc/microserviceApis/golang/payments v0.0.0-20240619055813-9c654f74ff06
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237 // indirect
 	google.golang.org/grpc v1.64.0
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/gorm v1.25.10

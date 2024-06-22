@@ -1,7 +1,7 @@
 package api
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/GolangAndGrpc/microservices/order/internal/application/core/domain"
 	"github.com/GolangAndGrpc/microservices/order/internal/ports"
@@ -26,7 +26,7 @@ func (a Application) PlaceOrder(order domain.Order) (domain.Order, error) {
 	}
 	paymentErr := a.payment.Charge(&order)
 	if paymentErr != nil {
-		log.Fatalf("Error while creatig payment....... %v", err)
+		fmt.Println("err occured")	
 	}
 	return order, nil
 }
