@@ -25,7 +25,7 @@ func NewAdapter(api ports.ApiPort, port int) *Adapter{
 func (a Adapter) Run() {
 	var err error
 	listen, err := net.Listen("tcp",fmt.Sprintf(":%d", a.port))
-	if err == nil {
+	if err != nil {
 		log.Fatalf("failed to listen on port %d, error: %v", a.port, err)
 	}
 

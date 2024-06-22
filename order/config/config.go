@@ -7,19 +7,19 @@ import (
 )
 
 func GetEnv() string {
-	return getEnvironmentValue("ENV")
+	return getEnvironmentValue("ORDER_ENV")
 }
 
 func GetDataSourceURL() string {
-	return getEnvironmentValue("DATA_SOURCE_URL")
+	return getEnvironmentValue("ORDER_DATA_SOURCE_URL")
 }
 
 func GetPaymentServiceUrl() string {
-	return getEnvironmentValue("PAYMENT_SERVICE_URL")
+	return getEnvironmentValue("ORDER_PAYMENT_SERVICE_URL")
 }
 
 func GetApplicationPort() int {
-	portStr := getEnvironmentValue("APPLICATION_PORT")
+	portStr := getEnvironmentValue("ORDER_APPLICATION_PORT")
 	port, err := strconv.Atoi(portStr)
 
 	if err != nil {

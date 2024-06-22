@@ -20,6 +20,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to initialize payment stub. Error: %v", err)
 	}
+	defer paymentAdapter.Close()
 
 	application := api.NewApplication(dbAdapter, paymentAdapter)
 	grpcAdapter := grpc.NewAdapter(application, config.GetApplicationPort())

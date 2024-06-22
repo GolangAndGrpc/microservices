@@ -1,0 +1,7 @@
+grpcurl Request on windows:
+
+  for Order :
+  grpcurl -d "{\"user_id\": 123, \"order_items\": [{\"product_code\": \"prod\", \"quantity\": 4, \"unit_price\": 12}]}" -plaintext localhost:8089 Order/Create
+
+  for Payment :
+  grpcurl --plaintext localhost:8088 Payment/Create

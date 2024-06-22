@@ -7,15 +7,15 @@ import (
 )
 
 func GetEnv() string {
-	return getEnvironmentValue("ENV")
+	return getEnvironmentValue("PAYMENT_ENV")
 }
 
 func GetDataSourceURL() string {
-	return getEnvironmentValue("DATA_SOURCE_URL")
+	return getEnvironmentValue("PAYMENT_DATA_SOURCE_URL")
 }
 
 func GetApplicationPort() int {
-	portStr := getEnvironmentValue("APPLICATION_PORT")
+	portStr := getEnvironmentValue("PAYMENT_APPLICATION_PORT")
 	port, err := strconv.Atoi(portStr)
 
 	if err != nil {

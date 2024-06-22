@@ -12,6 +12,7 @@ import (
 )
 
 func (a Adapter) Create(ctx context.Context, request *payments.CreatePaymentRequest) (*payments.CreatePaymentResponse, error) {
+	fmt.Printf("Request recevied for charging")
 	log.WithContext(ctx).Info("Creating Payment........")
 	newPayment := domain.NewPayment(request.UserId, request.OrderId, request.TotalPrice)
 	result, err := a.api.Charge(ctx,newPayment)
